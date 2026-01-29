@@ -2,22 +2,22 @@
 
 **Project:** Cartes des Emotions
 **Current Phase:** 3 of 4 (Slide-in Panel & Details)
-**Status:** In Progress
+**Status:** Phase Complete
 
 ## Progress
 
 Phase 1: COMPLETE - Foundation & Navigation [2/2 plans complete]
 Phase 2: COMPLETE - Emotion Cards Display [2/2 plans complete]
-Phase 3: IN PROGRESS - Slide-in Panel & Details [2/3 plans complete]
+Phase 3: COMPLETE - Slide-in Panel & Details [3/3 plans complete]
 Phase 4: Pending - Steps Carousel & Polish
 
-Progress: [#######---] 75% (6/8 plans)
+Progress: [########--] 87.5% (7/8 plans)
 
 ## Current Position
 
 **Phase:** 03-slide-in-panel-details
-**Plan:** 03-02-PLAN.md COMPLETE
-**Last activity:** 2026-01-29 - Completed 03-02-PLAN.md (Panel Content Components)
+**Plan:** 03-03-PLAN.md COMPLETE
+**Last activity:** 2026-01-29 - Completed 03-03-PLAN.md (Panel Integration)
 
 ## Completed Plans
 
@@ -29,6 +29,7 @@ Progress: [#######---] 75% (6/8 plans)
 | 02 | 02 | Responsive emotion/sentiment grid pages wired into navigation | 3edf6ad, b332ec3, 9d5f9cd |
 | 03 | 01 | SlidePanel with native dialog, swipe-to-close, PanelHeader | 5ba5954, 9c3872f, f81dff2, 146b0f3 |
 | 03 | 02 | EmotionPanel, SentimentPanel, CulpabilitePanel content components | baded45, 8c2850e, 2773908 |
+| 03 | 03 | Dialog backdrop and panel integration into pages | 9260a25, aa4a873, db2708c |
 
 ## Accumulated Decisions
 
@@ -49,6 +50,8 @@ Progress: [#######---] 75% (6/8 plans)
 | Default reduced motion for SSR | Safe fallback until client-side media query runs | 2026-01-29 |
 | Highlight needs section | Subtle background for needs/satisfiedNeeds as key insight | 2026-01-29 |
 | Single panel for Culpabilite | Internal state (selection/detail) not nested panels | 2026-01-29 |
+| Dialog backdrop 50% opacity | Consistent dark overlay across all panels | 2026-01-29 |
+| Type guard for panel selection | isCulpabilite() determines which panel to render | 2026-01-29 |
 
 ## Tech Stack
 
@@ -62,7 +65,7 @@ Progress: [#######---] 75% (6/8 plans)
 
 ## Key Files
 
-- `src/index.css` - Design system tokens
+- `src/index.css` - Design system tokens + dialog backdrop styles
 - `src/components/ui/LoadingScreen.tsx` - Loading screen component
 - `src/hooks/useIframeHeight.ts` - iframe height sync hook
 - `src/hooks/usePrefersReducedMotion.ts` - Motion preference detection
@@ -73,8 +76,8 @@ Progress: [#######---] 75% (6/8 plans)
 - `src/data/emotions.ts` - 7 unpleasant emotions data
 - `src/data/sentiments.ts` - 6 pleasant sentiments data
 - `src/components/emotions/EmotionCard.tsx` - Reusable emotion card
-- `src/components/emotions/UnpleasantEmotionsPage.tsx` - 7 emotion cards grid
-- `src/components/emotions/PleasantSentimentsPage.tsx` - 6 sentiment cards grid
+- `src/components/emotions/UnpleasantEmotionsPage.tsx` - 7 emotion cards grid with panel integration
+- `src/components/emotions/PleasantSentimentsPage.tsx` - 6 sentiment cards grid with panel integration
 - `src/components/panel/SlidePanel.tsx` - Base slide-up panel component
 - `src/components/panel/PanelHeader.tsx` - Reusable panel header
 - `src/components/panel/EmotionPanel.tsx` - Panel content for unpleasant emotions
@@ -86,17 +89,17 @@ Progress: [#######---] 75% (6/8 plans)
 
 See: .planning/PROJECT.md (updated 2026-01-29)
 **Core value:** Permettre a l'utilisateur d'identifier rapidement une emotion et comprendre le besoin sous-jacent
-**Current focus:** Phase 3 - Wiring panel components to card clicks
+**Current focus:** Phase 3 COMPLETE - Ready for Phase 4
 
 ## Next Actions
 
-1. Execute Plan 03-03: Wire panels to emotion/sentiment pages (click handlers)
+1. Execute Phase 04: Steps Carousel & Polish
 
 ## Session Continuity
 
-**Last session:** 2026-01-29T15:47:43Z
-**Stopped at:** Completed 03-02-PLAN.md (Panel Content Components)
-**Resume file:** None - Ready for 03-03-PLAN.md
+**Last session:** 2026-01-29T15:53:41Z
+**Stopped at:** Completed 03-03-PLAN.md (Panel Integration)
+**Resume file:** None - Ready for Phase 04
 
 ---
 *State updated: 2026-01-29*

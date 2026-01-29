@@ -18,7 +18,6 @@ export function SlidePanel({
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<Element | null>(null);
   const [dragOffset, setDragOffset] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -76,11 +75,9 @@ export function SlidePanel({
           triggerRef.current.focus();
         }
       } else {
-        setIsAnimating(true);
         // Wait for animation to complete
         const timeout = setTimeout(() => {
           dialog.close();
-          setIsAnimating(false);
           // Return focus
           if (triggerRef.current instanceof HTMLElement) {
             triggerRef.current.focus();

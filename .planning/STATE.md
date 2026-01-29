@@ -8,16 +8,16 @@
 
 Phase 1: COMPLETE - Foundation & Navigation [2/2 plans complete]
 Phase 2: COMPLETE - Emotion Cards Display [2/2 plans complete]
-Phase 3: IN PROGRESS - Slide-in Panel & Details [1/3 plans complete]
+Phase 3: IN PROGRESS - Slide-in Panel & Details [2/3 plans complete]
 Phase 4: Pending - Steps Carousel & Polish
 
-Progress: [######----] 62% (5/8 plans)
+Progress: [#######---] 75% (6/8 plans)
 
 ## Current Position
 
 **Phase:** 03-slide-in-panel-details
-**Plan:** 03-01-PLAN.md COMPLETE
-**Last activity:** 2026-01-29 - Completed 03-01-PLAN.md (Slide Panel Foundation)
+**Plan:** 03-02-PLAN.md COMPLETE
+**Last activity:** 2026-01-29 - Completed 03-02-PLAN.md (Panel Content Components)
 
 ## Completed Plans
 
@@ -28,6 +28,7 @@ Progress: [######----] 62% (5/8 plans)
 | 02 | 01 | Emotion types, 7 emotions, 6 sentiments data, EmotionCard component | 2513474, a9398b0, a880451, 8cca419 |
 | 02 | 02 | Responsive emotion/sentiment grid pages wired into navigation | 3edf6ad, b332ec3, 9d5f9cd |
 | 03 | 01 | SlidePanel with native dialog, swipe-to-close, PanelHeader | 5ba5954, 9c3872f, f81dff2, 146b0f3 |
+| 03 | 02 | EmotionPanel, SentimentPanel, CulpabilitePanel content components | baded45, 8c2850e, 2773908 |
 
 ## Accumulated Decisions
 
@@ -46,6 +47,8 @@ Progress: [######----] 62% (5/8 plans)
 | Animate inner wrapper not dialog | dialog uses display:none which breaks CSS transitions | 2026-01-29 |
 | 100px or 0.5 velocity swipe threshold | Responsive swipe-to-close without being too sensitive | 2026-01-29 |
 | Default reduced motion for SSR | Safe fallback until client-side media query runs | 2026-01-29 |
+| Highlight needs section | Subtle background for needs/satisfiedNeeds as key insight | 2026-01-29 |
+| Single panel for Culpabilite | Internal state (selection/detail) not nested panels | 2026-01-29 |
 
 ## Tech Stack
 
@@ -74,24 +77,26 @@ Progress: [######----] 62% (5/8 plans)
 - `src/components/emotions/PleasantSentimentsPage.tsx` - 6 sentiment cards grid
 - `src/components/panel/SlidePanel.tsx` - Base slide-up panel component
 - `src/components/panel/PanelHeader.tsx` - Reusable panel header
+- `src/components/panel/EmotionPanel.tsx` - Panel content for unpleasant emotions
+- `src/components/panel/SentimentPanel.tsx` - Panel content for pleasant sentiments
+- `src/components/panel/CulpabilitePanel.tsx` - Two-level panel for Culpabilite
 - `Dockerfile` + `Caddyfile` - Deployment configuration
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-01-29)
 **Core value:** Permettre a l'utilisateur d'identifier rapidement une emotion et comprendre le besoin sous-jacent
-**Current focus:** Phase 3 - Building emotion/sentiment detail panels
+**Current focus:** Phase 3 - Wiring panel components to card clicks
 
 ## Next Actions
 
-1. Execute Plan 03-02: Emotion Detail Panel (emotion content in SlidePanel)
-2. Execute Plan 03-03: Sentiment Detail Panel (sentiment content in SlidePanel)
+1. Execute Plan 03-03: Wire panels to emotion/sentiment pages (click handlers)
 
 ## Session Continuity
 
-**Last session:** 2026-01-29T15:44:17Z
-**Stopped at:** Completed 03-01-PLAN.md (Slide Panel Foundation)
-**Resume file:** None - Ready for 03-02-PLAN.md
+**Last session:** 2026-01-29T15:47:43Z
+**Stopped at:** Completed 03-02-PLAN.md (Panel Content Components)
+**Resume file:** None - Ready for 03-03-PLAN.md
 
 ---
 *State updated: 2026-01-29*

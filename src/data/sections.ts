@@ -11,27 +11,27 @@ export interface Section {
 
 export const sections: Section[] = [
   {
+    id: 'steps',
+    title: 'Les 5 étapes',
+    subtitle: 'Régulation émotionnelle',
+    description: 'Apprendre à traverser une émotion en 5 étapes',
+    color: 'bg-brand-primary',
+    textColor: 'text-white',
+  },
+  {
     id: 'unpleasant',
-    title: 'Quand ca ne va pas',
-    subtitle: '7 emotions',
-    description: 'Explorer les emotions desagreables et comprendre leurs messages',
+    title: 'Quand ça ne va pas',
+    subtitle: '7 émotions',
+    description: 'Explorer les émotions désagréables et comprendre leurs messages',
     color: 'bg-red',
     textColor: 'text-white',
   },
   {
     id: 'pleasant',
-    title: 'Quand ca va bien',
+    title: 'Quand ça va bien',
     subtitle: '6 sentiments',
-    description: 'Decouvrir les sentiments agreables et leurs origines',
+    description: 'Découvrir les sentiments agréables et leurs origines',
     color: 'bg-mint',
     textColor: 'text-bg-primary',
-  },
-  {
-    id: 'steps',
-    title: 'Les 5 etapes',
-    subtitle: 'Regulation emotionnelle',
-    description: 'Apprendre a traverser une emotion en 5 etapes',
-    color: 'bg-brand-primary',
-    textColor: 'text-white',
   },
 ];

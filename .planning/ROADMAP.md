@@ -53,12 +53,12 @@ Plans:
 - [x] 03-02-PLAN.md — Panel content (EmotionPanel, SentimentPanel, CulpabilitePanel)
 - [x] 03-03-PLAN.md — Integration and verification (wire to pages, human-verify)
 
-**Status:** ✓ Complete (2026-01-29)
+**Status:** Complete (2026-01-29)
 
 ### Phase 4: Steps Carousel & Polish
 **Goal:** Complete the 5-step carousel and final integration testing.
 **Requirements:** STEPS-01, STEPS-02, STEPS-03
-**Plans:** (created by /gsd:plan-phase)
+**Plans:** 2 plans
 **Success Criteria:**
 1. User can swipe or use arrows to navigate through 5 steps horizontally
 2. User sees current progress indicator (e.g., "2/5")
@@ -66,7 +66,8 @@ Plans:
 4. Full app works correctly embedded in Circle.so iframe
 
 Plans:
-- [ ] TBD — Created by /gsd:plan-phase
+- [ ] 04-01-PLAN.md — Step data layer + StepsCarousel components (StepCard, ProgressIndicator, StepsCarousel)
+- [ ] 04-02-PLAN.md — StepsPage integration + human verification
 
 ## Dependency Graph
 
@@ -92,13 +93,14 @@ All phases are sequential - each builds on the foundation of the previous.
 | 1 | Medium | 2 plans |
 | 2 | Low-Medium | 2 plans |
 | 3 | High | 3 plans |
-| 4 | Medium | 1-2 plans |
+| 4 | Medium | 2 plans |
 
-**Total:** 8-9 implementation plans (quick depth)
+**Total:** 9 implementation plans (quick depth)
 
 ---
 *Roadmap created: 2026-01-29*
 *Phase 1 planned: 2026-01-29*
 *Phase 2 planned: 2026-01-29*
 *Phase 3 planned: 2026-01-29*
+*Phase 4 planned: 2026-01-29*
 *Mode: yolo (auto-approve)*

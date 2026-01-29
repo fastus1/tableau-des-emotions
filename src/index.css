@@ -35,3 +35,19 @@ body {
   margin: 0;
   min-height: 100vh;
 }
+
+/* Dialog backdrop styling */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure dialog has no default styling interfering */
+dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+dialog[open] {
+  display: flex;
+}

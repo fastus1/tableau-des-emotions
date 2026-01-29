@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { sentiments, sentimentIcons } from '../../data/sentiments';
 import { EmotionCard } from './EmotionCard';
+import type { Sentiment } from '../../types/emotions';
+import { SentimentPanel } from '../panel/SentimentPanel';
 
 export function PleasantSentimentsPage() {
-  const handleCardClick = (sentimentId: string) => {
-    // Phase 3 will implement panel opening
-    console.log('Clicked sentiment:', sentimentId);
+  const [selectedSentiment, setSelectedSentiment] = useState<Sentiment | null>(null);
+
+  const handleCardClick = (sentiment: Sentiment) => {
+    setSelectedSentiment(sentiment);
   };
 
   return (
@@ -31,11 +35,21 @@ export function PleasantSentimentsPage() {
               color={sentiment.color}
               textColor={sentiment.textColor}
               icon={Icon}
-              onClick={() => handleCardClick(sentiment.id)}
+              onClick={() => handleCardClick(sentiment)}
             />
           );
         })}
       </div>
+
+      {/* Sentiment detail panel */}
+      {selectedSentiment && (
+        <SentimentPanel
+          sentiment={selectedSentiment}
+          icon={sentimentIcons[selectedSentiment.id]}
+          isOpen={selectedSentiment !== null}
+          onClose={() => setSelectedSentiment(null)}
+        />
+      )}
     </div>
   );
 }

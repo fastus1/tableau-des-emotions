@@ -9,9 +9,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Navigation
 
-- [ ] **NAV-01**: Page d'accueil avec 3 cartes d'entree (desagreables, agreables, 5 etapes)
-- [ ] **NAV-02**: Bouton retour (icone fleche) pour revenir a l'accueil
-- [ ] **NAV-03**: Pas de header persistant (UI epuree)
+- [x] **NAV-01**: Page d'accueil avec 3 cartes d'entree (desagreables, agreables, 5 etapes)
+- [x] **NAV-02**: Bouton retour (icone fleche) pour revenir a l'accueil
+- [x] **NAV-03**: Pas de header persistant (UI epuree)
 
 ### Cartes Emotions
 
@@ -36,10 +36,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Technique
 
-- [ ] **TECH-01**: postMessage pour hauteur iframe dynamique
-- [ ] **TECH-02**: Fallback hauteur 900px si postMessage echoue
-- [ ] **TECH-03**: HTTPS obligatoire
-- [ ] **TECH-04**: Ecran de chargement (logo + spinner)
+- [x] **TECH-01**: postMessage pour hauteur iframe dynamique
+- [x] **TECH-02**: Fallback hauteur 900px si postMessage echoue
+- [x] **TECH-03**: HTTPS obligatoire
+- [x] **TECH-04**: Ecran de chargement (logo + spinner)
 
 ### Accessibilite
 
@@ -83,9 +83,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NAV-01 | 1 | Pending |
-| NAV-02 | 1 | Pending |
-| NAV-03 | 1 | Pending |
+| NAV-01 | 1 | Complete |
+| NAV-02 | 1 | Complete |
+| NAV-03 | 1 | Complete |
 | CARD-01 | 2 | Pending |
 | CARD-02 | 2 | Pending |
 | CARD-03 | 2 | Pending |
@@ -98,10 +98,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | STEPS-01 | 4 | Pending |
 | STEPS-02 | 4 | Pending |
 | STEPS-03 | 4 | Pending |
-| TECH-01 | 1 | Pending |
-| TECH-02 | 1 | Pending |
-| TECH-03 | 1 | Pending |
-| TECH-04 | 1 | Pending |
+| TECH-01 | 1 | Complete |
+| TECH-02 | 1 | Complete |
+| TECH-03 | 1 | Complete |
+| TECH-04 | 1 | Complete |
 | A11Y-01 | 3 | Pending |
 | A11Y-02 | 3 | Pending |
 | A11Y-03 | 3 | Pending |

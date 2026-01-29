@@ -17,8 +17,10 @@
 4. App displays loading screen with logo and spinner on initial load
 
 Plans:
-- [ ] 01-01-PLAN.md — Project scaffolding, Tailwind CSS 4 design system, LoadingScreen component
-- [ ] 01-02-PLAN.md — Layout with iframe height sync, state navigation, HomePage with 3 entry cards
+- [x] 01-01-PLAN.md — Project scaffolding, Tailwind CSS 4 design system, LoadingScreen component
+- [x] 01-02-PLAN.md — Layout with iframe height sync, state navigation, HomePage with 3 entry cards
+
+**Status:** ✓ Complete (2026-01-29)
 
 ### Phase 2: Emotion Cards Display
 **Goal:** Display emotion cards in responsive grids with proper visual styling and interaction states.

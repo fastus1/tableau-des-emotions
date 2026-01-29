@@ -4,6 +4,8 @@ import { Layout } from './components/layout/Layout';
 import { BackButton } from './components/layout/BackButton';
 import { LoadingScreen } from './components/ui/LoadingScreen';
 import { HomePage } from './components/home/HomePage';
+import { UnpleasantEmotionsPage } from './components/emotions/UnpleasantEmotionsPage';
+import { PleasantSentimentsPage } from './components/emotions/PleasantSentimentsPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,18 +32,8 @@ function App() {
 
       {/* View routing */}
       {currentView === 'home' && <HomePage onNavigate={navigate} />}
-      {currentView === 'unpleasant' && (
-        <div className="text-center py-12">
-          <h2 className="text-xl font-semibold mb-2">Quand ca ne va pas</h2>
-          <p className="text-text-secondary">7 emotions - A venir dans Phase 2</p>
-        </div>
-      )}
-      {currentView === 'pleasant' && (
-        <div className="text-center py-12">
-          <h2 className="text-xl font-semibold mb-2">Quand ca va bien</h2>
-          <p className="text-text-secondary">6 sentiments - A venir dans Phase 2</p>
-        </div>
-      )}
+      {currentView === 'unpleasant' && <UnpleasantEmotionsPage />}
+      {currentView === 'pleasant' && <PleasantSentimentsPage />}
       {currentView === 'steps' && (
         <div className="text-center py-12">
           <h2 className="text-xl font-semibold mb-2">Les 5 etapes</h2>

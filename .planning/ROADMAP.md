@@ -25,7 +25,7 @@ Plans:
 ### Phase 2: Emotion Cards Display
 **Goal:** Display emotion cards in responsive grids with proper visual styling and interaction states.
 **Requirements:** CARD-01, CARD-02, CARD-03, CARD-04, CARD-05, ANIM-01, ANIM-02
-**Plans:** (created by /gsd:plan-phase)
+**Plans:** 2 plans
 **Success Criteria:**
 1. User sees 7 desagreables emotions as colored cards with icons and keywords
 2. User sees 6 agreables sentiments as colored cards with icons and keywords
@@ -33,7 +33,8 @@ Plans:
 4. Cards show hover elevation and smooth transitions on interaction
 
 Plans:
-- [ ] TBD — Created by /gsd:plan-phase
+- [ ] 02-01-PLAN.md — Data layer (types, emotions, sentiments) and EmotionCard component
+- [ ] 02-02-PLAN.md — Grid pages (UnpleasantEmotionsPage, PleasantSentimentsPage) and App wiring
 
 ### Phase 3: Slide-in Panel & Details
 **Goal:** Implement the slide-in panel system with emotion details and guilt special case.
@@ -83,13 +84,14 @@ All phases are sequential - each builds on the foundation of the previous.
 | Phase | Complexity | Estimated Duration |
 |-------|------------|-------------------|
 | 1 | Medium | 2 plans |
-| 2 | Low-Medium | 1-2 plans |
+| 2 | Low-Medium | 2 plans |
 | 3 | High | 2-3 plans |
 | 4 | Medium | 1-2 plans |
 
-**Total:** 6-9 implementation plans (quick depth)
+**Total:** 7-9 implementation plans (quick depth)
 
 ---
 *Roadmap created: 2026-01-29*
 *Phase 1 planned: 2026-01-29*
+*Phase 2 planned: 2026-01-29*
 *Mode: yolo (auto-approve)*

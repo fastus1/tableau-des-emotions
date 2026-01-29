@@ -7,6 +7,7 @@ import { HomePage } from './components/home/HomePage';
 import { UnpleasantEmotionsPage } from './components/emotions/UnpleasantEmotionsPage';
 import { PleasantSentimentsPage } from './components/emotions/PleasantSentimentsPage';
 import { StepsPage } from './components/steps/StepsPage';
+import { AnchorPhrasesPage } from './components/anchors/AnchorPhrasesPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +37,7 @@ function App() {
       {currentView === 'unpleasant' && <UnpleasantEmotionsPage />}
       {currentView === 'pleasant' && <PleasantSentimentsPage />}
       {currentView === 'steps' && <StepsPage />}
+      {currentView === 'anchors' && <AnchorPhrasesPage />}
     </Layout>
   );
 }

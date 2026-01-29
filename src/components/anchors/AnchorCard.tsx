@@ -1,12 +1,12 @@
 import type { LucideIcon } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
-interface EmotionCardProps {
-  name: string;
-  keywords: [string, string, string];
-  color: string;      // e.g. 'bg-red'
-  textColor: string;  // e.g. 'text-white'
+interface AnchorCardProps {
+  emotionName: string;
+  phrases: string[];
+  color: string;
+  textColor: string;
   icon: LucideIcon;
-  onClick: () => void;
 }
 
 // Map color classes to hover gradient classes
@@ -23,10 +23,6 @@ const colorToHoverGradient: Record<string, string> = {
   'bg-cyan': 'group-hover:from-cyan group-hover:to-cyan/80',
   'bg-slate': 'group-hover:from-slate group-hover:to-slate/80',
   'bg-indigo': 'group-hover:from-indigo group-hover:to-indigo/80',
-  'bg-rose': 'group-hover:from-rose group-hover:to-rose/80',
-  'bg-sky': 'group-hover:from-sky group-hover:to-sky/80',
-  'bg-violet': 'group-hover:from-violet group-hover:to-violet/80',
-  'bg-emerald': 'group-hover:from-emerald group-hover:to-emerald/80',
 };
 
 // Map color classes to glow classes
@@ -43,10 +39,6 @@ const colorToGlow: Record<string, string> = {
   'bg-cyan': 'hover:shadow-[0_8px_30px_-4px_rgba(6,182,212,0.5)]',
   'bg-slate': 'hover:shadow-[0_8px_30px_-4px_rgba(100,116,139,0.5)]',
   'bg-indigo': 'hover:shadow-[0_8px_30px_-4px_rgba(99,102,241,0.5)]',
-  'bg-rose': 'hover:shadow-[0_8px_30px_-4px_rgba(244,63,94,0.5)]',
-  'bg-sky': 'hover:shadow-[0_8px_30px_-4px_rgba(14,165,233,0.5)]',
-  'bg-violet': 'hover:shadow-[0_8px_30px_-4px_rgba(168,85,247,0.5)]',
-  'bg-emerald': 'hover:shadow-[0_8px_30px_-4px_rgba(16,185,129,0.5)]',
 };
 
 // Map color classes to icon accent color on default state
@@ -63,10 +55,6 @@ const colorToAccent: Record<string, string> = {
   'bg-cyan': 'text-cyan',
   'bg-slate': 'text-slate',
   'bg-indigo': 'text-indigo',
-  'bg-rose': 'text-rose',
-  'bg-sky': 'text-sky',
-  'bg-violet': 'text-violet',
-  'bg-emerald': 'text-emerald',
 };
 
 // Map color classes to icon background on default state
@@ -83,23 +71,18 @@ const colorToIconBg: Record<string, string> = {
   'bg-cyan': 'bg-cyan/15',
   'bg-slate': 'bg-slate/15',
   'bg-indigo': 'bg-indigo/15',
-  'bg-rose': 'bg-rose/15',
-  'bg-sky': 'bg-sky/15',
-  'bg-violet': 'bg-violet/15',
-  'bg-emerald': 'bg-emerald/15',
 };
 
-export function EmotionCard({ name, keywords, color, icon: Icon, onClick }: EmotionCardProps) {
+export function AnchorCard({ emotionName, phrases, color, icon: Icon }: AnchorCardProps) {
   const hoverGradient = colorToHoverGradient[color] || '';
   const glowClass = colorToGlow[color] || '';
   const accentColor = colorToAccent[color] || 'text-brand-primary';
   const iconBg = colorToIconBg[color] || 'bg-brand-primary/15';
 
   return (
-    <button
-      onClick={onClick}
+    <div
       className={`
-        group relative w-full p-5 rounded-2xl text-left overflow-hidden
+        group relative w-full p-5 rounded-2xl overflow-hidden
         bg-bg-secondary
         bg-gradient-to-br from-bg-secondary to-bg-secondary
         ${hoverGradient}
@@ -108,9 +91,6 @@ export function EmotionCard({ name, keywords, color, icon: Icon, onClick }: Emot
         transition-all duration-300 ease-out
         hover:translate-y-[-3px] hover:border-white/30
         ${glowClass}
-        active:scale-[0.98]
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary
-        min-h-[150px]
       `}
     >
       {/* Gradient overlay for depth - visible on hover */}
@@ -123,7 +103,7 @@ export function EmotionCard({ name, keywords, color, icon: Icon, onClick }: Emot
       />
 
       {/* Background icon watermark */}
-      <Icon
+      <Quote
         size={80}
         className="absolute -right-2 -bottom-2 opacity-5 group-hover:opacity-15 transition-all duration-300 group-hover:scale-110"
         strokeWidth={1}
@@ -132,19 +112,30 @@ export function EmotionCard({ name, keywords, color, icon: Icon, onClick }: Emot
 
       {/* Content */}
       <div className="relative">
-        {/* Icon in circle */}
-        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${iconBg} group-hover:bg-white/20 mb-4 transition-all duration-300 group-hover:scale-105`}>
-          <Icon size={24} strokeWidth={2} className={`${accentColor} group-hover:text-white transition-colors duration-300`} />
+        {/* Header with icon and emotion name */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${iconBg} group-hover:bg-white/20 transition-all duration-300`}>
+            <Icon size={20} strokeWidth={2} className={`${accentColor} group-hover:text-white transition-colors duration-300`} />
+          </div>
+          <h3 className="text-lg font-bold text-text-primary group-hover:text-white transition-colors duration-300">
+            {emotionName}
+          </h3>
         </div>
 
-        <h3 className="text-lg font-bold mb-2 text-text-primary group-hover:text-white transition-colors duration-300">
-          {name}
-        </h3>
-
-        <p className="text-sm text-text-secondary group-hover:text-white/80 leading-relaxed transition-colors duration-300">
-          {keywords.join(' · ')}
-        </p>
+        {/* Phrases */}
+        <div className="space-y-3">
+          {phrases.map((phrase, index) => (
+            <blockquote
+              key={index}
+              className="pl-4 border-l-2 border-brand-primary/30 group-hover:border-white/50 transition-colors duration-300"
+            >
+              <p className="text-sm text-text-secondary group-hover:text-white/90 leading-relaxed italic transition-colors duration-300">
+                « {phrase} »
+              </p>
+            </blockquote>
+          ))}
+        </div>
       </div>
-    </button>
+    </div>
   );
 }

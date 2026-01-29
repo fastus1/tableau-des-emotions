@@ -21,7 +21,7 @@ export const sections: Section[] = [
   {
     id: 'unpleasant',
     title: 'Quand ça ne va pas',
-    subtitle: '7 émotions',
+    subtitle: '11 émotions',
     description: 'Explorer les émotions désagréables et comprendre leurs messages',
     color: 'bg-red',
     textColor: 'text-white',
@@ -29,9 +29,17 @@ export const sections: Section[] = [
   {
     id: 'pleasant',
     title: 'Quand ça va bien',
-    subtitle: '6 sentiments',
+    subtitle: '10 sentiments',
     description: 'Découvrir les sentiments agréables et leurs origines',
     color: 'bg-mint',
+    textColor: 'text-bg-primary',
+  },
+  {
+    id: 'anchors',
+    title: 'Phrases d\'ancrage',
+    subtitle: 'Soutien émotionnel',
+    description: 'Des phrases pour s\'aider à traverser les moments difficiles',
+    color: 'bg-amber',
     textColor: 'text-bg-primary',
   },
 ];

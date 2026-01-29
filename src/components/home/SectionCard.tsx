@@ -1,4 +1,4 @@
-import { ChevronRight, CloudRain, Sun, Footprints } from 'lucide-react';
+import { ChevronRight, CloudRain, Sun, Footprints, Quote } from 'lucide-react';
 import { Section } from '../../data/sections';
 
 interface SectionCardProps {
@@ -10,18 +10,21 @@ const sectionIcons = {
   unpleasant: CloudRain,
   pleasant: Sun,
   steps: Footprints,
+  anchors: Quote,
 };
 
 const sectionHoverColors = {
   unpleasant: 'group-hover:from-red/90 group-hover:via-red/80 group-hover:to-red/70',
   pleasant: 'group-hover:from-mint/90 group-hover:via-mint/80 group-hover:to-mint/70',
   steps: 'group-hover:from-brand-primary/90 group-hover:via-brand-primary/80 group-hover:to-brand-primary/70',
+  anchors: 'group-hover:from-amber/90 group-hover:via-amber/80 group-hover:to-amber/70',
 };
 
 const sectionHoverGlows = {
   unpleasant: 'hover:shadow-[0_8px_40px_-8px_rgba(239,68,68,0.4)]',
   pleasant: 'hover:shadow-[0_8px_40px_-8px_rgba(45,212,191,0.4)]',
   steps: 'hover:shadow-[0_8px_40px_-8px_rgba(59,130,246,0.4)]',
+  anchors: 'hover:shadow-[0_8px_40px_-8px_rgba(245,158,11,0.4)]',
 };
 
 export function SectionCard({ section, onClick }: SectionCardProps) {

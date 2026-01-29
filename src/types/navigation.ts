@@ -1,1 +1,1 @@
-export type View = 'home' | 'unpleasant' | 'pleasant' | 'steps';
+export type View = 'home' | 'unpleasant' | 'pleasant' | 'steps' | 'anchors';

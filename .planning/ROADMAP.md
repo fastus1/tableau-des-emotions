@@ -33,8 +33,10 @@ Plans:
 4. Cards show hover elevation and smooth transitions on interaction
 
 Plans:
-- [ ] 02-01-PLAN.md — Data layer (types, emotions, sentiments) and EmotionCard component
-- [ ] 02-02-PLAN.md — Grid pages (UnpleasantEmotionsPage, PleasantSentimentsPage) and App wiring
+- [x] 02-01-PLAN.md — Data layer (types, emotions, sentiments) and EmotionCard component
+- [x] 02-02-PLAN.md — Grid pages (UnpleasantEmotionsPage, PleasantSentimentsPage) and App wiring
+
+**Status:** ✓ Complete (2026-01-29)
 
 ### Phase 3: Slide-in Panel & Details
 **Goal:** Implement the slide-in panel system with emotion details and guilt special case.

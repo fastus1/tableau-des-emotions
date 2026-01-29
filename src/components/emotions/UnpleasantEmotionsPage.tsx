@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import { emotions, emotionIcons } from '../../data/emotions';
 import { EmotionCard } from './EmotionCard';
+import type { Emotion, CulpabiliteEmotion } from '../../types/emotions';
+import { isCulpabilite } from '../../types/emotions';
+import { EmotionPanel } from '../panel/EmotionPanel';
+import { CulpabilitePanel } from '../panel/CulpabilitePanel';
 
 export function UnpleasantEmotionsPage() {
-  const handleCardClick = (emotionId: string) => {
-    // Phase 3 will implement panel opening
-    console.log('Clicked emotion:', emotionId);
+  const [selectedEmotion, setSelectedEmotion] = useState<Emotion | CulpabiliteEmotion | null>(null);
+
+  const handleCardClick = (emotion: Emotion | CulpabiliteEmotion) => {
+    setSelectedEmotion(emotion);
   };
 
   return (
@@ -31,11 +37,30 @@ export function UnpleasantEmotionsPage() {
               color={emotion.color}
               textColor={emotion.textColor}
               icon={Icon}
-              onClick={() => handleCardClick(emotion.id)}
+              onClick={() => handleCardClick(emotion)}
             />
           );
         })}
       </div>
+
+      {/* Emotion detail panel */}
+      {selectedEmotion && (
+        isCulpabilite(selectedEmotion) ? (
+          <CulpabilitePanel
+            emotion={selectedEmotion}
+            icon={emotionIcons[selectedEmotion.id]}
+            isOpen={selectedEmotion !== null}
+            onClose={() => setSelectedEmotion(null)}
+          />
+        ) : (
+          <EmotionPanel
+            emotion={selectedEmotion}
+            icon={emotionIcons[selectedEmotion.id]}
+            isOpen={selectedEmotion !== null}
+            onClose={() => setSelectedEmotion(null)}
+          />
+        )
+      )}
     </div>
   );
 }

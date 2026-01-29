@@ -30,9 +30,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Carousel
 
-- [ ] **STEPS-01**: Navigation horizontale (fleches + swipe)
-- [ ] **STEPS-02**: Indicateur de progression (2/5)
-- [ ] **STEPS-03**: Une etape visible a la fois
+- [x] **STEPS-01**: Navigation horizontale (fleches + swipe)
+- [x] **STEPS-02**: Indicateur de progression (2/5)
+- [x] **STEPS-03**: Une etape visible a la fois
 
 ### Technique
 
@@ -95,9 +95,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PANEL-02 | 3 | Complete |
 | PANEL-03 | 3 | Complete |
 | PANEL-04 | 3 | Complete |
-| STEPS-01 | 4 | Pending |
-| STEPS-02 | 4 | Pending |
-| STEPS-03 | 4 | Pending |
+| STEPS-01 | 4 | Complete |
+| STEPS-02 | 4 | Complete |
+| STEPS-03 | 4 | Complete |
 | TECH-01 | 1 | Complete |
 | TECH-02 | 1 | Complete |
 | TECH-03 | 1 | Complete |

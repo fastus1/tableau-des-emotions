@@ -1,23 +1,23 @@
 # Project State
 
 **Project:** Cartes des Emotions
-**Current Phase:** 3 of 4 (Slide-in Panel & Details)
-**Status:** Phase Complete
+**Current Phase:** 4 of 4 (Steps Carousel & Polish)
+**Status:** In Progress
 
 ## Progress
 
 Phase 1: COMPLETE - Foundation & Navigation [2/2 plans complete]
 Phase 2: COMPLETE - Emotion Cards Display [2/2 plans complete]
 Phase 3: COMPLETE - Slide-in Panel & Details [3/3 plans complete]
-Phase 4: Pending - Steps Carousel & Polish
+Phase 4: IN PROGRESS - Steps Carousel & Polish [1/1 plan complete]
 
-Progress: [########--] 87.5% (7/8 plans)
+Progress: [##########] 100% (8/8 plans)
 
 ## Current Position
 
-**Phase:** 03-slide-in-panel-details
-**Plan:** 03-03-PLAN.md COMPLETE
-**Last activity:** 2026-01-29 - Completed 03-03-PLAN.md (Panel Integration)
+**Phase:** 04-steps-carousel-polish
+**Plan:** 04-01-PLAN.md COMPLETE
+**Last activity:** 2026-01-29 - Completed 04-01-PLAN.md (Carousel Data + Components)
 
 ## Completed Plans
 
@@ -30,6 +30,7 @@ Progress: [########--] 87.5% (7/8 plans)
 | 03 | 01 | SlidePanel with native dialog, swipe-to-close, PanelHeader | 5ba5954, 9c3872f, f81dff2, 146b0f3 |
 | 03 | 02 | EmotionPanel, SentimentPanel, CulpabilitePanel content components | baded45, 8c2850e, 2773908 |
 | 03 | 03 | Dialog backdrop and panel integration into pages | 9260a25, aa4a873, db2708c |
+| 04 | 01 | Step type, 5 steps data, carousel components with swipe/keyboard | 3369a8d, 0ebe95e |
 
 ## Accumulated Decisions
 
@@ -52,6 +53,9 @@ Progress: [########--] 87.5% (7/8 plans)
 | Single panel for Culpabilite | Internal state (selection/detail) not nested panels | 2026-01-29 |
 | Dialog backdrop 50% opacity | Consistent dark overlay across all panels | 2026-01-29 |
 | Type guard for panel selection | isCulpabilite() determines which panel to render | 2026-01-29 |
+| useReducer for carousel state | Cleaner than multiple useState for pos/sliding/dir state | 2026-01-29 |
+| No wrap carousel navigation | Stops at first/last step for pedagogical sequence | 2026-01-29 |
+| Clickable progress dots | Allows jumping to any step for navigation flexibility | 2026-01-29 |
 
 ## Tech Stack
 
@@ -73,8 +77,10 @@ Progress: [########--] 87.5% (7/8 plans)
 - `src/components/home/HomePage.tsx` - Home view with section cards
 - `src/App.tsx` - Root component with navigation state
 - `src/types/emotions.ts` - Emotion/Sentiment type definitions
+- `src/types/steps.ts` - Step interface definition
 - `src/data/emotions.ts` - 7 unpleasant emotions data
 - `src/data/sentiments.ts` - 6 pleasant sentiments data
+- `src/data/steps.ts` - 5 steps data for emotional regulation
 - `src/components/emotions/EmotionCard.tsx` - Reusable emotion card
 - `src/components/emotions/UnpleasantEmotionsPage.tsx` - 7 emotion cards grid with panel integration
 - `src/components/emotions/PleasantSentimentsPage.tsx` - 6 sentiment cards grid with panel integration
@@ -83,23 +89,27 @@ Progress: [########--] 87.5% (7/8 plans)
 - `src/components/panel/EmotionPanel.tsx` - Panel content for unpleasant emotions
 - `src/components/panel/SentimentPanel.tsx` - Panel content for pleasant sentiments
 - `src/components/panel/CulpabilitePanel.tsx` - Two-level panel for Culpabilite
+- `src/components/steps/StepCard.tsx` - Individual step display
+- `src/components/steps/ProgressIndicator.tsx` - Dot navigation + counter
+- `src/components/steps/StepsCarousel.tsx` - Carousel with swipe/keyboard nav
 - `Dockerfile` + `Caddyfile` - Deployment configuration
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-01-29)
 **Core value:** Permettre a l'utilisateur d'identifier rapidement une emotion et comprendre le besoin sous-jacent
-**Current focus:** Phase 3 COMPLETE - Ready for Phase 4
+**Current focus:** Phase 4 Plan 1 COMPLETE - Carousel components ready for integration
 
 ## Next Actions
 
-1. Execute Phase 04: Steps Carousel & Polish
+1. Integrate StepsCarousel into main navigation flow (if additional plan exists)
+2. Final polish and testing
 
 ## Session Continuity
 
-**Last session:** 2026-01-29T15:53:41Z
-**Stopped at:** Completed 03-03-PLAN.md (Panel Integration)
-**Resume file:** None - Ready for Phase 04
+**Last session:** 2026-01-29T16:15:27Z
+**Stopped at:** Completed 04-01-PLAN.md (Carousel Data + Components)
+**Resume file:** None
 
 ---
 *State updated: 2026-01-29*

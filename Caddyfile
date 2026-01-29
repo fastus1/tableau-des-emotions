@@ -1,0 +1,14 @@
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:3000} {
+	root * /app/dist
+	encode gzip
+
+	# SPA fallback - redirect all non-file requests to index.html
+	try_files {path} /index.html
+
+	file_server
+}

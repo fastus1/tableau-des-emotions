@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Scratch folder for sharing images with Claude
+.scratch/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -75,8 +75,51 @@ Three main sections:
 
 ## Deployment
 
-- `staging` branch → Railway staging environment
-- `production` branch → Railway production environment
+### Environments
+
+| Environment | Branch | URL | Auto-deploy |
+|-------------|--------|-----|-------------|
+| Production | `main` | https://vivacious-dream-production.up.railway.app | ✅ on push |
+| Staging | `staging` | https://vivacious-dream-staging.up.railway.app | ✅ on push |
+
+### Git Workflow
+
+```bash
+# Work on main locally
+git checkout main
+# ... make changes ...
+
+# Push to staging to test
+git checkout staging
+git merge main
+git push origin staging
+# → auto-deploys to staging
+
+# When validated, push to production
+git checkout main
+git push origin main
+# → auto-deploys to production
+```
+
+### Railway CLI
+
+```bash
+railway login              # Login to Railway
+railway status             # Check current project/environment
+railway logs               # View deployment logs
+railway environment staging|production  # Switch environment
+```
+
+### Domain Restriction
+
+The app is protected by a password gate (`src/components/ui/PasswordGate.tsx`):
+- **Allowed origin**: `https://communaute.avancersimplement.com` (Circle.so)
+- **Password**: `074491` (for direct access)
+- Authorization is stored in sessionStorage
+
+## Scratch Folder
+
+Use `.scratch/` folder to share images with Claude. This folder is git-ignored.
 
 ## Content Source
 

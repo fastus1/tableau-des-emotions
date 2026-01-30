@@ -11,14 +11,21 @@ export function LoadingScreen() {
       />
 
       {/* Logo Avancer Simplement */}
-      <img
-        src="https://res.cloudinary.com/dxhn08di4/image/upload/v1768749285/avancer-simplement/_shared/logos/logo-blanc-320.png"
-        alt="Avancer Simplement"
-        className="relative w-48 sm:w-56 md:w-64 mb-10"
+      <div
+        className="relative flex flex-col items-center mb-10"
         style={{
           animation: 'fade-in 0.6s ease-out forwards',
         }}
-      />
+      >
+        <img
+          src="https://res.cloudinary.com/dxhn08di4/image/upload/v1768749285/avancer-simplement/_shared/logos/logo-blanc-320.png"
+          alt=""
+          className="w-20 sm:w-24 mb-4"
+        />
+        <span className="font-brand text-2xl sm:text-3xl italic font-black text-white tracking-wide">
+          AVANCER SIMPLEMENT
+        </span>
+      </div>
 
       {/* Animated dots loader */}
       <div className="relative flex items-center gap-2">

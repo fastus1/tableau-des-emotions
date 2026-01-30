@@ -3,6 +3,7 @@ import { View } from './types/navigation';
 import { Layout } from './components/layout/Layout';
 import { BackButton } from './components/layout/BackButton';
 import { LoadingScreen } from './components/ui/LoadingScreen';
+import { PasswordGate } from './components/ui/PasswordGate';
 import { HomePage } from './components/home/HomePage';
 import { UnpleasantEmotionsPage } from './components/emotions/UnpleasantEmotionsPage';
 import { PleasantSentimentsPage } from './components/emotions/PleasantSentimentsPage';
@@ -24,21 +25,27 @@ function App() {
 
   // Show loading screen
   if (isLoading) {
-    return <LoadingScreen />;
+    return (
+      <PasswordGate>
+        <LoadingScreen />
+      </PasswordGate>
+    );
   }
 
   return (
-    <Layout>
-      {/* Back button - only shown when not on home (NAV-02) */}
-      {currentView !== 'home' && <BackButton onClick={goHome} />}
+    <PasswordGate>
+      <Layout>
+        {/* Back button - only shown when not on home (NAV-02) */}
+        {currentView !== 'home' && <BackButton onClick={goHome} />}
 
-      {/* View routing */}
-      {currentView === 'home' && <HomePage onNavigate={navigate} />}
-      {currentView === 'unpleasant' && <UnpleasantEmotionsPage />}
-      {currentView === 'pleasant' && <PleasantSentimentsPage />}
-      {currentView === 'steps' && <StepsPage />}
-      {currentView === 'anchors' && <AnchorPhrasesPage />}
-    </Layout>
+        {/* View routing */}
+        {currentView === 'home' && <HomePage onNavigate={navigate} />}
+        {currentView === 'unpleasant' && <UnpleasantEmotionsPage />}
+        {currentView === 'pleasant' && <PleasantSentimentsPage />}
+        {currentView === 'steps' && <StepsPage />}
+        {currentView === 'anchors' && <AnchorPhrasesPage />}
+      </Layout>
+    </PasswordGate>
   );
 }
 

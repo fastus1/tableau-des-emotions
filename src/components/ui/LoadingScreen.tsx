@@ -1,6 +1,6 @@
 export function LoadingScreen() {
   return (
-    <div className="fixed inset-0 bg-bg-primary flex flex-col items-center justify-center">
+    <div className="fixed inset-0 bg-bg-primary flex flex-col items-center justify-center px-6 text-center">
       {/* Subtle gradient background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -12,7 +12,7 @@ export function LoadingScreen() {
 
       {/* Logo text - Montserrat 900 italic with fade-in */}
       <h1
-        className="relative font-brand text-4xl sm:text-5xl italic font-black text-text-primary mb-10 tracking-tight"
+        className="relative font-brand text-3xl sm:text-4xl md:text-5xl italic font-black text-text-primary mb-10 tracking-tight"
         style={{
           animation: 'fade-in 0.6s ease-out forwards',
         }}

@@ -20,7 +20,7 @@ export function PanelHeader({
       }}
     >
       {/* Drag handle indicator */}
-      <div className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-4 hover:bg-white/30 transition-colors cursor-grab" />
+      <div className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-4" />
 
       {/* Header row */}
       <div className="flex items-center px-5 pb-4 border-b border-white/5">

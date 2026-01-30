@@ -14,22 +14,33 @@ export function SlidePanel({
   children,
 }: SlidePanelProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<Element | null>(null);
   const [dragOffset, setDragOffset] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  // Swipe handlers
+  // Track scroll position to enable swipe-to-close only at top
+  const handleScroll = useCallback(() => {
+    if (contentRef.current) {
+      setIsAtTop(contentRef.current.scrollTop <= 0);
+    }
+  }, []);
+
+  // Swipe handlers - only active when scrolled to top
   const swipeHandlers = useSwipeable({
     onSwiping: (eventData) => {
-      if (eventData.dir === 'Down') {
+      if (eventData.dir === 'Down' && isAtTop) {
         setDragOffset(Math.max(0, eventData.deltaY));
       }
     },
     onSwipedDown: (eventData) => {
-      // Close if swiped past threshold or with high velocity
-      if (eventData.deltaY > 100 || eventData.velocity > 0.5) {
-        onClose();
+      if (isAtTop) {
+        // Close if swiped past threshold or with high velocity
+        if (eventData.deltaY > 100 || eventData.velocity > 0.5) {
+          onClose();
+        }
       }
       setDragOffset(0);
     },
@@ -38,7 +49,7 @@ export function SlidePanel({
     },
     trackMouse: false,
     trackTouch: true,
-    preventScrollOnSwipe: true,
+    preventScrollOnSwipe: false,
   });
 
   // Handle dialog open/close
@@ -52,6 +63,9 @@ export function SlidePanel({
 
       // Show dialog
       dialog.showModal();
+
+      // Reset scroll state
+      setIsAtTop(true);
 
       // Trigger animation after dialog is shown
       if (prefersReducedMotion) {
@@ -133,22 +147,26 @@ export function SlidePanel({
       {/* Centered container for desktop */}
       <div className="fixed inset-0 flex items-end sm:items-center sm:justify-center sm:p-6 pointer-events-none">
         <div
+          ref={contentRef}
           {...swipeHandlers}
+          onScroll={handleScroll}
           className={`
             pointer-events-auto
             w-full sm:max-w-lg md:max-w-xl
             rounded-t-3xl sm:rounded-2xl
             max-h-[90vh] sm:max-h-[85vh]
             overflow-y-auto
+            overscroll-contain
             border border-white/10
             shadow-2xl
-            ${prefersReducedMotion ? '' : 'transition-all duration-300 ease-out'}
+            ${prefersReducedMotion ? '' : 'transition-transform duration-300 ease-out'}
           `}
           style={{
             transform: computeTransform(),
             background: 'linear-gradient(180deg, rgba(30, 33, 40, 0.98) 0%, rgba(22, 24, 28, 0.99) 100%)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
+            WebkitOverflowScrolling: 'touch',
           }}
           onClick={(e) => e.stopPropagation()}
         >

@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: tableau-emotions
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - PORT=3000

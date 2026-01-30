@@ -4,6 +4,7 @@ import { Section } from '../../data/sections';
 interface SectionCardProps {
   section: Section;
   onClick: () => void;
+  compact?: boolean;
 }
 
 const sectionIcons = {
@@ -27,7 +28,7 @@ const sectionHoverGlows = {
   anchors: 'hover:shadow-[0_8px_40px_-8px_rgba(245,158,11,0.4)]',
 };
 
-export function SectionCard({ section, onClick }: SectionCardProps) {
+export function SectionCard({ section, onClick, compact = false }: SectionCardProps) {
   const Icon = sectionIcons[section.id as keyof typeof sectionIcons];
   const hoverColor = sectionHoverColors[section.id as keyof typeof sectionHoverColors];
   const hoverGlow = sectionHoverGlows[section.id as keyof typeof sectionHoverGlows];
@@ -36,7 +37,7 @@ export function SectionCard({ section, onClick }: SectionCardProps) {
     <button
       onClick={onClick}
       className={`
-        group relative w-full p-6 rounded-2xl text-left overflow-hidden
+        group relative w-full ${compact ? 'p-4' : 'p-6'} rounded-2xl text-left overflow-hidden
         bg-bg-secondary
         bg-gradient-to-br from-bg-secondary via-bg-secondary to-bg-secondary
         ${hoverColor}
@@ -46,7 +47,7 @@ export function SectionCard({ section, onClick }: SectionCardProps) {
         hover:translate-y-[-2px] hover:border-white/30
         ${hoverGlow}
         active:scale-[0.98]
-        min-h-[140px]
+        ${compact ? 'min-h-[100px]' : 'min-h-[140px]'}
         focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary
         animate-fade-in-up
       `}
@@ -62,7 +63,7 @@ export function SectionCard({ section, onClick }: SectionCardProps) {
 
       {/* Background icon */}
       <Icon
-        size={120}
+        size={compact ? 80 : 120}
         className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-15 transform rotate-12 transition-all duration-300 group-hover:rotate-6 group-hover:scale-110"
         aria-hidden="true"
       />
@@ -70,13 +71,13 @@ export function SectionCard({ section, onClick }: SectionCardProps) {
       {/* Content */}
       <div className="relative flex justify-between items-start gap-4">
         <div className="flex-1">
-          <p className="text-sm font-medium text-text-secondary group-hover:text-white/80 mb-1.5 uppercase tracking-wide transition-colors duration-300">
+          <p className={`font-medium text-text-secondary group-hover:text-white/80 mb-1.5 uppercase tracking-wide transition-colors duration-300 ${compact ? 'text-xs' : 'text-sm'}`}>
             {section.subtitle}
           </p>
-          <h2 className="text-xl sm:text-2xl font-bold mb-2 transition-colors duration-300">
+          <h2 className={`font-bold mb-2 transition-colors duration-300 ${compact ? 'text-base sm:text-lg' : 'text-xl sm:text-2xl'}`}>
             {section.title}
           </h2>
-          <p className="text-sm text-text-secondary group-hover:text-white/90 leading-relaxed max-w-[280px] transition-colors duration-300">
+          <p className={`text-text-secondary group-hover:text-white/90 leading-relaxed transition-colors duration-300 ${compact ? 'text-xs' : 'text-sm max-w-[280px]'}`}>
             {section.description}
           </p>
         </div>

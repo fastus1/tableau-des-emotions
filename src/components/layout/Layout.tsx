@@ -10,7 +10,7 @@ export function Layout({ children }: LayoutProps) {
   useIframeHeight();
 
   return (
-    <div className="min-h-screen bg-bg-primary text-text-primary relative">
+    <div className="min-h-screen bg-bg-primary text-text-primary relative flex flex-col">
       {/* Subtle gradient overlay for depth */}
       <div
         className="fixed inset-0 pointer-events-none"
@@ -19,9 +19,24 @@ export function Layout({ children }: LayoutProps) {
         }}
         aria-hidden="true"
       />
-      <main className="relative max-w-2xl mx-auto px-5 py-8">
+      <main className="relative flex-1 max-w-2xl mx-auto px-5 py-8 w-full">
         {children}
       </main>
+
+      {/* Footer */}
+      <footer className="relative py-6 border-t border-white/5 text-center">
+        <p className="text-text-muted text-xs">
+          Basé sur les tableaux de régulation émotionnelle de{' '}
+          <a
+            href="https://communaute.avancersimplement.com/u/ce7b3989"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-link hover:text-brand-secondary transition-colors underline underline-offset-2"
+          >
+            Diane Lapensée
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

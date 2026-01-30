@@ -49,23 +49,32 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </header>
 
       {/* Section cards */}
-      <div className="flex flex-col gap-5 stagger-children">
-        {sections.map((section) => (
-          <SectionCard
-            key={section.id}
-            section={section}
-            onClick={() => onNavigate(section.id)}
-          />
-        ))}
-      </div>
+      <div className="flex flex-col gap-4 stagger-children">
+        {/* First card - full width */}
+        <SectionCard
+          section={sections[0]}
+          onClick={() => onNavigate(sections[0].id)}
+        />
 
-      {/* Footer attribution */}
-      <footer className="mt-10 pt-6 border-t border-white/5 text-center">
-        <p className="text-text-muted text-xs">
-          Basé sur les tableaux de régulation émotionnelle de{' '}
-          <span className="text-text-secondary">Diane Lapensée</span>
-        </p>
-      </footer>
-    </div>
+        {/* Middle cards - side by side */}
+        <div className="grid grid-cols-2 gap-4">
+          <SectionCard
+            section={sections[1]}
+            onClick={() => onNavigate(sections[1].id)}
+            compact
+          />
+          <SectionCard
+            section={sections[2]}
+            onClick={() => onNavigate(sections[2].id)}
+            compact
+          />
+        </div>
+
+        {/* Last card - full width */}
+        <SectionCard
+          section={sections[3]}
+          onClick={() => onNavigate(sections[3].id)}
+        />
+      </div>    </div>
   );
 }

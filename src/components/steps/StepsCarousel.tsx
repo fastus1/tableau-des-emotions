@@ -124,40 +124,44 @@ export function StepsCarousel() {
   const canGoNext = state.pos < numItems - 1;
 
   return (
-    <section className="py-8">
+    <section className="py-4 animate-fade-in">
       {/* Header */}
-      <div className="text-center mb-6 px-4">
-        <h2 className="text-2xl font-bold text-text-primary mb-2">
-          Les 5 etapes
+      <div className="text-center mb-8 px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">
+          Les 5 étapes
         </h2>
-        <p className="text-text-secondary">
-          Du declencheur au besoin - Mieux se comprendre
+        <p className="text-text-secondary text-base max-w-sm mx-auto">
+          Du déclencheur au besoin — Mieux se comprendre
         </p>
       </div>
 
       {/* Navigation arrows and carousel */}
       <div className="relative">
         {/* Navigation arrows */}
-        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-10 px-2">
+        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-10 px-1">
           <button
             onClick={slidePrev}
             disabled={!canGoPrev}
-            className={`w-10 h-10 rounded-full bg-bg-secondary/80 flex items-center justify-center pointer-events-auto transition-opacity ${
-              canGoPrev ? 'opacity-100 hover:bg-bg-secondary' : 'opacity-30 cursor-not-allowed'
+            className={`w-11 h-11 rounded-xl glass flex items-center justify-center pointer-events-auto transition-all duration-200 ${
+              canGoPrev
+                ? 'opacity-100 hover:bg-white/10 hover:scale-105 active:scale-95'
+                : 'opacity-30 cursor-not-allowed'
             }`}
-            aria-label="Etape precedente"
+            aria-label="Étape précédente"
           >
-            <ChevronLeft className="w-6 h-6 text-text-primary" />
+            <ChevronLeft className="w-5 h-5 text-text-primary" />
           </button>
           <button
             onClick={slideNext}
             disabled={!canGoNext}
-            className={`w-10 h-10 rounded-full bg-bg-secondary/80 flex items-center justify-center pointer-events-auto transition-opacity ${
-              canGoNext ? 'opacity-100 hover:bg-bg-secondary' : 'opacity-30 cursor-not-allowed'
+            className={`w-11 h-11 rounded-xl glass flex items-center justify-center pointer-events-auto transition-all duration-200 ${
+              canGoNext
+                ? 'opacity-100 hover:bg-white/10 hover:scale-105 active:scale-95'
+                : 'opacity-30 cursor-not-allowed'
             }`}
-            aria-label="Etape suivante"
+            aria-label="Étape suivante"
           >
-            <ChevronRight className="w-6 h-6 text-text-primary" />
+            <ChevronRight className="w-5 h-5 text-text-primary" />
           </button>
         </div>
 

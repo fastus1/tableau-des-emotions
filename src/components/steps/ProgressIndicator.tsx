@@ -5,24 +5,26 @@ interface ProgressIndicatorProps {
 }
 
 /**
- * Progress indicator with dots and numeric counter.
- * Dots are clickable to jump to specific steps.
+ * Progress indicator with bars and numeric counter.
+ * Bars are clickable to jump to specific steps.
  */
 export function ProgressIndicator({ current, total, onGoTo }: ProgressIndicatorProps) {
   return (
-    <div className="flex items-center justify-center gap-4">
-      {/* Dot buttons */}
-      <div className="flex items-center gap-2">
+    <div className="flex items-center justify-center gap-4 px-4">
+      {/* Progress bars */}
+      <div className="flex items-center gap-1.5 flex-1 max-w-xs">
         {Array.from({ length: total }, (_, index) => (
           <button
             key={index}
             onClick={() => onGoTo(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
+            className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
               index === current
-                ? 'bg-brand-primary'
-                : 'bg-white/30 hover:bg-white/50'
+                ? 'bg-brand-primary shadow-sm shadow-brand-primary/50'
+                : index < current
+                ? 'bg-brand-primary/50'
+                : 'bg-white/20 hover:bg-white/30'
             }`}
-            aria-label={`Aller a l'etape ${index + 1}`}
+            aria-label={`Aller à l'étape ${index + 1}`}
             aria-disabled={index === current}
             aria-current={index === current ? 'step' : undefined}
           />
@@ -31,7 +33,7 @@ export function ProgressIndicator({ current, total, onGoTo }: ProgressIndicatorP
 
       {/* Numeric counter */}
       <span
-        className="text-text-secondary text-sm"
+        className="text-text-muted text-sm font-medium tabular-nums"
         aria-live="polite"
       >
         {current + 1}/{total}

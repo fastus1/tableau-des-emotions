@@ -6,14 +6,12 @@ interface SlidePanelProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
-  color?: string; // Background color class, default 'bg-bg-secondary'
 }
 
 export function SlidePanel({
   isOpen,
   onClose,
   children,
-  color = 'bg-bg-secondary',
 }: SlidePanelProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<Element | null>(null);
@@ -128,19 +126,34 @@ export function SlidePanel({
   return (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 m-0 max-h-full max-w-full p-0 bg-transparent backdrop:bg-black/50"
+      className="fixed inset-0 m-0 max-h-full max-w-full p-0 bg-transparent backdrop:bg-black/70 backdrop:backdrop-blur-sm"
       onClose={handleDialogClose}
       onClick={handleBackdropClick}
     >
-      <div
-        {...swipeHandlers}
-        className={`fixed bottom-0 left-0 right-0 ${color} rounded-t-2xl max-h-[85vh] overflow-y-auto ${
-          prefersReducedMotion ? '' : 'transition-transform duration-300 ease-out'
-        }`}
-        style={{ transform: computeTransform() }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {children}
+      {/* Centered container for desktop */}
+      <div className="fixed inset-0 flex items-end sm:items-center sm:justify-center sm:p-6 pointer-events-none">
+        <div
+          {...swipeHandlers}
+          className={`
+            pointer-events-auto
+            w-full sm:max-w-lg md:max-w-xl
+            rounded-t-3xl sm:rounded-2xl
+            max-h-[90vh] sm:max-h-[85vh]
+            overflow-y-auto
+            border border-white/10
+            shadow-2xl
+            ${prefersReducedMotion ? '' : 'transition-all duration-300 ease-out'}
+          `}
+          style={{
+            transform: computeTransform(),
+            background: 'linear-gradient(180deg, rgba(30, 33, 40, 0.98) 0%, rgba(22, 24, 28, 0.99) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {children}
+        </div>
       </div>
     </dialog>
   );

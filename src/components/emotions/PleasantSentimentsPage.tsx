@@ -12,31 +12,32 @@ export function PleasantSentimentsPage() {
   };
 
   return (
-    <div>
+    <div className="animate-fade-in">
       {/* Section header */}
-      <header className="mb-6">
-        <h1 className="text-2xl font-semibold text-text-primary mb-2">
-          Quand ca va bien
+      <header className="mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-text-primary mb-2">
+          Quand ça va bien
         </h1>
-        <p className="text-text-secondary">
-          6 sentiments agreables
+        <p className="text-text-secondary text-base">
+          6 sentiments agréables
         </p>
       </header>
 
       {/* Responsive grid: 1 col mobile, 2 col tablet, 3 col desktop */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
         {sentiments.map((sentiment) => {
           const Icon = sentimentIcons[sentiment.id];
           return (
-            <EmotionCard
-              key={sentiment.id}
-              name={sentiment.name}
-              keywords={sentiment.keywords}
-              color={sentiment.color}
-              textColor={sentiment.textColor}
-              icon={Icon}
-              onClick={() => handleCardClick(sentiment)}
-            />
+            <div key={sentiment.id} className="animate-fade-in-up">
+              <EmotionCard
+                name={sentiment.name}
+                keywords={sentiment.keywords}
+                color={sentiment.color}
+                textColor={sentiment.textColor}
+                icon={Icon}
+                onClick={() => handleCardClick(sentiment)}
+              />
+            </div>
           );
         })}
       </div>

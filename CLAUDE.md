@@ -41,6 +41,12 @@ The app uses a dark theme with specific CSS variables:
 
 **Typography**: Inter (body), Montserrat 900 italic (branding)
 
+**Logo "Avancer Simplement"**: Le logo est composé de deux éléments :
+1. Les trois flèches (image Cloudinary) : `https://res.cloudinary.com/dxhn08di4/image/upload/v1768749285/avancer-simplement/_shared/logos/logo-blanc-320.png`
+2. Le texte "AVANCER SIMPLEMENT" en Montserrat bold italic (font-brand)
+
+Ces deux éléments doivent toujours apparaître ensemble pour former le logo complet.
+
 ## Architecture
 
 Three main sections:

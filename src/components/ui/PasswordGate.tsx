@@ -5,23 +5,52 @@ const ALLOWED_ORIGIN = 'https://communaute.avancersimplement.com';
 const PASSWORD = '074491';
 
 function isAllowedOrigin(): boolean {
-  // Check if we're in an iframe
-  const isInIframe = window.parent !== window;
+  try {
+    // Check if we're in an iframe
+    const isInIframe = window.parent !== window;
 
-  if (!isInIframe) {
-    // Not in iframe - check referrer
-    return document.referrer.startsWith(ALLOWED_ORIGIN);
+    // Check referrer first (works in most cases)
+    const referrer = document.referrer || '';
+    if (referrer.startsWith(ALLOWED_ORIGIN)) {
+      return true;
+    }
+
+    // In iframe - try to check ancestor origins (Chrome only)
+    if (isInIframe && window.location.ancestorOrigins && window.location.ancestorOrigins.length > 0) {
+      const origins = Array.from(window.location.ancestorOrigins);
+      if (origins.some(origin => origin === ALLOWED_ORIGIN)) {
+        return true;
+      }
+    }
+
+    // If in iframe but can't determine origin, allow access
+    // (better UX than blocking legitimate users)
+    if (isInIframe && !referrer) {
+      return true;
+    }
+
+    return false;
+  } catch {
+    // If any error occurs, allow access in iframe context
+    return window.parent !== window;
   }
+}
 
-  // In iframe - try to check ancestor origins (Chrome)
-  if (window.location.ancestorOrigins && window.location.ancestorOrigins.length > 0) {
-    return Array.from(window.location.ancestorOrigins).some(origin =>
-      origin === ALLOWED_ORIGIN
-    );
+function getSessionAuth(): boolean {
+  try {
+    return sessionStorage.getItem('app_authorized') === 'true';
+  } catch {
+    // sessionStorage blocked (third-party iframe)
+    return false;
   }
+}
 
-  // Fallback: check referrer
-  return document.referrer.startsWith(ALLOWED_ORIGIN);
+function setSessionAuth(): void {
+  try {
+    sessionStorage.setItem('app_authorized', 'true');
+  } catch {
+    // Ignore if blocked
+  }
 }
 
 interface PasswordGateProps {
@@ -35,8 +64,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
 
   useEffect(() => {
     // Check if already authorized in session
-    const sessionAuth = sessionStorage.getItem('app_authorized');
-    if (sessionAuth === 'true') {
+    if (getSessionAuth()) {
       setIsAuthorized(true);
       return;
     }
@@ -48,7 +76,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === PASSWORD) {
-      sessionStorage.setItem('app_authorized', 'true');
+      setSessionAuth();
       setIsAuthorized(true);
       setError(false);
     } else {

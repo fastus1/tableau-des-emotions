@@ -11,6 +11,7 @@ import { StepsPage } from './components/steps/StepsPage';
 import { AnchorPhrasesPage } from './components/anchors/AnchorPhrasesPage';
 
 function App() {
+  const isStaging = import.meta.env.VITE_APP_ENV === 'staging';
   const [isLoading, setIsLoading] = useState(true);
   const [currentView, setCurrentView] = useState<View>('home');
 
@@ -45,6 +46,11 @@ function App() {
         {currentView === 'steps' && <StepsPage />}
         {currentView === 'anchors' && <AnchorPhrasesPage />}
       </Layout>
+      {isStaging && (
+        <div className="fixed bottom-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded z-50">
+          STAGING
+        </div>
+      )}
     </PasswordGate>
   );
 }

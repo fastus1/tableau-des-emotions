@@ -1,6 +1,9 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        - VITE_APP_ENV=staging
     container_name: tableau-emotions
     ports:
       - "3001:3000"

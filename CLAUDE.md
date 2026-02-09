@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Framework**: React + Vite
 - **Styling**: Tailwind CSS + CSS custom properties (design system variables)
 - **Icons**: Lucide React
-- **Hosting**: Railway (staging + production branches)
+- **Hosting**: Railway (production), Portainer (staging local)
 
 ## Commands
 
@@ -77,10 +77,16 @@ Three main sections:
 
 ### Environments
 
-| Environment | Branch | URL | Auto-deploy |
-|-------------|--------|-----|-------------|
-| Production | `main` | https://vivacious-dream-production.up.railway.app | ✅ on push |
-| Staging | `staging` | https://vivacious-dream-staging.up.railway.app | ✅ on push |
+| Environment | Branch | Platform | URL | Auto-deploy |
+|-------------|--------|----------|-----|-------------|
+| Production | `main` | Railway | https://vivacious-dream-production.up.railway.app | ✅ on push |
+| Staging | `staging` | Portainer (local) | http://localhost:3001 | Manual (docker compose) |
+
+### Staging Indicator
+
+When `VITE_APP_ENV=staging`, an orange "STAGING" badge is displayed in the bottom-left corner of the app. This is set automatically:
+- **Portainer/docker-compose**: `VITE_APP_ENV=staging` passed as build arg
+- **Railway**: Defaults to `production` via Dockerfile ARG
 
 ### Git Workflow
 
@@ -89,16 +95,15 @@ Three main sections:
 git checkout main
 # ... make changes ...
 
-# Push to staging to test
+# Deploy to staging (Portainer)
 git checkout staging
 git merge main
-git push origin staging
-# → auto-deploys to staging
+# → rebuild in Portainer (docker compose up --build)
 
-# When validated, push to production
+# Deploy to production (Railway)
 git checkout main
 git push origin main
-# → auto-deploys to production
+# → auto-deploys to Railway
 ```
 
 ### Railway CLI
@@ -107,7 +112,6 @@ git push origin main
 railway login              # Login to Railway
 railway status             # Check current project/environment
 railway logs               # View deployment logs
-railway environment staging|production  # Switch environment
 ```
 
 ### Domain Restriction

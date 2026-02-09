@@ -25,6 +25,16 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Footer */}
       <footer className="relative py-6 border-t border-white/5 text-center">
+        <p className="text-text-secondary text-sm mb-3">
+          <a
+            href="https://assets-v2.circle.so/61o9s1f6h32zhy7c3y6un3ecw703"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-link hover:text-brand-secondary transition-colors underline underline-offset-2"
+          >
+            Télécharger le tableau en version PDF
+          </a>
+        </p>
         <p className="text-text-muted text-xs">
           Basé sur les tableaux de régulation émotionnelle de{' '}
           <a
